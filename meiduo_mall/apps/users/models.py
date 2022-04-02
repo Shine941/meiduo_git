@@ -14,9 +14,12 @@ from django.db import models
 # 这个用户模型有密码的加密和密码验证
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
+
+
 class User(AbstractUser):
     mobile = models.CharField(max_length=11, unique=True)
-    class Meta:  # 修改表名
+
+    class Meta:  # 修改表名为tb_user，默认是auth_user
         db_table = 'tb_users'
-        verbose_name='用户管理'
-        verbose_name_plural=verbose_name
+        verbose_name = '用户管理'
+        verbose_name_plural = verbose_name
