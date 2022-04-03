@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6-=g=ea723pazr@usz^84s@!jj&1bvrsgaw9=z&3pz@iqflugz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['meiduo', '127.0.0.1']
+ALLOWED_HOSTS = ['www.meiduo.site1', '127.0.0.1']
 
 # Application definition
 
@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.users',
+    # CORS
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    # CORS 的配置放在最上边
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -190,3 +194,14 @@ LOGGING = {
 # 通过提供一个值给AUTH_USER_MODEL设置，指向自定义的模型，Django允许你覆盖默认的User模型：
 # 这个点式路径包含Django应用的名称（必须位于你的INSTALLED_APPS中），和要用作User模型的Django模型的名称。
 AUTH_USER_MODEL = 'users.User'
+
+# #############CORS##################
+# CORS
+CORS_ALLOWED_ORIGINS = (
+    'http://127.0.0.1:8080',
+    'http://localhost:8080',
+    'http://www.meiduo.site1:8080',
+    'http://www.meiduo.site1:8000',
+)
+CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
+
